@@ -52,6 +52,9 @@ img{
 /* -----------------------HEADER------------------------- */
 .header {
     border-bottom: 1px solid #E7E9FC;
+    box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+        0px 1px 1px rgba(46, 47, 66, 0.16),
+        0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -92,19 +95,24 @@ img{
     line-height: 1.5;
     letter-spacing: 0.02em;
     text-align: left;
-    color: #2e2f42;
+    color: #404BBF;
     padding: 24px 0;
     display: block;
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0,0.2,1);
 }
 
 .nav-iteam:hover,
 .nav-iteam:focus {
     color: #404BBF;
 }
-.studio:active::after{
+.studio::after{
     content: "";
-    display: block;
-    color: #404BBF;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 4px;background-color: #404BBF;
     border-radius: 2px;
 }
 
@@ -126,6 +134,7 @@ img{
     line-height: 1.5;
     letter-spacing: 0.02em;
     text-align: left;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .phone-number{
@@ -144,17 +153,16 @@ img{
 /* -------------------------HERO----------------------- */
 .section-hero {
     background-color: #2E2F42;
-    background-image: linear-gradient
-    (to bottom, rgba(46, 47, 66, 0.7)),
-    url(./images/people-office.jpg);
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office.jpg);
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     background-size: cover;
     color: #ffffff ;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     text-align: center;
     padding: 188px 0;
+    max-width: 1440px;
 }
 
 .hero-titel{
@@ -184,6 +192,7 @@ img{
     border: none;
     border-radius: 4px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .button-order:hover,
@@ -220,15 +229,23 @@ img{
 }
 
 .icon-features{
-        gap: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 112px;
+        background-color: #F4F4FD;
+        border-radius: 4px;
         border: 1px solid #8E8F99;
+        margin-bottom: 8px;
+        gap: 0px;
         border-radius: 4px 0px 0px 0px;
         border: 1px 0px 0px 0px;
         opacity: 0px;
         background-color: #F4F4FD;
         padding: 24px 100px;
-        margin-bottom: 8px;
-}
+        }
+
+
 .features-titel{
     font-family:"Roboto", sans-serif;
     font-size: 20px;
@@ -300,16 +317,28 @@ img{
 
 .social-link {
     display: flex;
+    justify-content: center;
     gap: 24px;
-    margin-left: auto;
+}
+.social-link-item{
+    width: 40px;
+    height: 40px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-.social-link .icon-social {
-    fill: #fff;
-display: flex;
+.link{
+    width: 100%;
+    height: 100%;
+    background-color: #4d5ae5;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+.icon-social {
+
+    fill: #F4F4FD;
+    align-items: center;
     flex-direction: row;
     gap: 24px;
     background-color: #4D5AE5;
@@ -317,7 +346,8 @@ display: flex;
     margin-bottom: 32px;
     }
 
-.social-link .icon-social:hover {
+.link:hover,
+.link:focus {
     background-color: #404BBF;
 }
 
@@ -341,42 +371,39 @@ display: flex;
     color: #434455;
     font-family: "Roboto", sans-serif;
     width: calc((100% - 48px) / 3);
-    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 
-                0 1px 1px 0 rgba(46, 47, 66, 0.16), 
-                0 1px 6px 0 rgba(46, 47, 66, 0.08);
-    position: relative;
-    overflow: hidden;
-}
-.overlay{
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    letter-spacing: 0.02em;
-    color: #F4F4FD;
-    background-color: #4D5AE5;
-    padding-bottom: 164px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 300px;
-
-    transform: translateX(-100%);
-
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.portfolio-iteam:active{
-    transform: translateX(0);
+.portfolio-iteam:hover{
+    transform: translateY(0);
 }
 
 .iteam-text{
     padding: 32px 16px;
     border: 1px solid #e7e9fc;
     border-top: none;
-    margin-bottom: 8px
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
 }
 
+.overlay {
+    color: #F4F4FD;
+    background-color: #4D5AE5;
+    padding:40px 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+
+    transform: translateY(0);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
 
 .portfolio-titel{
         font-family: "Roboto", sans-serif;
@@ -408,13 +435,15 @@ display: flex;
     letter-spacing: 0.02em;
     padding: 100px 0
 }
-.footer-iteams{
-    display: flex;
-    gap: 120px;
-}
 
 .footer-container{
-    margin-left: 156px;
+    display: flex;
+    align-items: baseline;
+
+}
+
+.footer-items{
+    margin-right: 120px;
     min-width: 264px;
 }
 .accent-footer {
@@ -438,17 +467,42 @@ display: flex;
 }
 
 .social-link-titel{
-    font-family: var(--font-family);
+    color: #ffffff;
     font-weight: 500;
     font-size: 16px;
-    line-height: 150%;
+    line-height: 1.5;
     letter-spacing: 0.02em;
-    color: var(--white);
     margin-bottom: 16px;
 }
 
-.container-social-links .icon-social:hover{
+.social-link-list{
+    display: flex;
+    gap: 16px;
+
+}
+
+.social-link-list-item{
+    width: 40px;
+    height: 40px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-footer {
+    width: 100%;
+    height: 100%;
+    background-color: #4d5ae5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-footer:hover,
+.link-footer:focus{
     background-color: #31D0AA;
 }
 
+.icon-social-footer{
+    fill: #F4F4FD;
+}
 /* ------------------------------------------------ */
